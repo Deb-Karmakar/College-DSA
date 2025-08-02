@@ -7,7 +7,7 @@ This repository contains Data Structures and Algorithms (DSA) implementations fo
 
 ### 1. Sparse Matrix Operations
 
-#### `01_TransposeSparseMatrixOfTripletForm`
+#### `1_TransposeSparseMatrixOfTripletForm`
 **Purpose**: Implementation of sparse matrix transpose using triplet representation
 
 **Features**:
@@ -24,7 +24,7 @@ This repository contains Data Structures and Algorithms (DSA) implementations fo
 **Input**: Matrix dimensions and elements
 **Output**: Original and transposed sparse matrices with memory usage analysis
 
-#### `02_AddSparse`
+#### `1.1_AddSparse`
 **Purpose**: Addition of two sparse matrices in triplet representation
 
 **Features**:
