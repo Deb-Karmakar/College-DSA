@@ -41,6 +41,23 @@ This repository contains Data Structures and Algorithms (DSA) implementations fo
 **Input**: Two sparse matrices in triplet format
 **Output**: Sum of the two matrices in triplet representation
 
+#### `1.2_Add_Mul_Poly`
+**Purpose**: Polynomial addition and multiplication
+
+**Features**:
+- Input polynomials as a set of terms (coefficient, exponent)
+- Efficient addition and multiplication algorithms for polynomials
+- Handles polynomials with various terms
+
+**Key Functions**:
+- `inputPolynomial()`: Takes input for a polynomial's terms
+- `addPolynomials()`: Adds two polynomials
+- `multiplyPolynomials()`: Multiplies two polynomials
+- `displayPolynomial()`: Displays polynomial in readable format
+
+**Input**: Two polynomial expressions
+**Output**: The sum and product of the two polynomial expressions
+
 ## Compilation and Execution
 
 ### Prerequisites
@@ -50,10 +67,13 @@ This repository contains Data Structures and Algorithms (DSA) implementations fo
 ### Compilation
 ```bash
 # Compile sparse matrix transpose program
-gcc -o transpose 01_TransposeSparseMatrixOfTripletForm
+gcc -o transpose 1.0_TransposeSparseMatrixOfTripletForm
 
 # Compile sparse matrix addition program
-gcc -o addsparse 02_AddSparse
+gcc -o addsparse 1.1_AddSparse
+
+# Compile polynomial operations program
+gcc -o polynomial 1.2_Add_Mul_Poly
 ```
 
 ### Execution
@@ -63,6 +83,9 @@ gcc -o addsparse 02_AddSparse
 
 # Run addition program
 ./addsparse
+
+# Run polynomial program
+./polynomial
 ```
 
 ## Program Usage
@@ -82,7 +105,18 @@ gcc -o addsparse 02_AddSparse
 5. Enter triplet values for Matrix B
 6. View the sum of both matrices
 
-## Data Structure: Triplet Representation
+### Polynomial Operations
+1. Enter number of non-zero terms for Polynomial A
+2. Input each term as coefficient and exponent
+3. Enter number of non-zero terms for Polynomial B
+4. Input each term as coefficient and exponent
+5. View both polynomials in standard form
+6. View the sum of both polynomials
+7. View the product of both polynomials
+
+## Data Structures
+
+### Triplet Representation
 
 The programs use a triplet structure to represent sparse matrices:
 ```c
@@ -98,7 +132,21 @@ The first element (index 0) stores metadata:
 - `col`: Total number of columns in original matrix
 - `val`: Number of non-zero elements
 
-## Advantages of Sparse Matrix Representation
+### Polynomial Term Representation
+
+Polynomials are represented using a term structure:
+```c
+typedef struct {
+    int coeff;  // Coefficient of the term
+    int expo;   // Exponent of the term
+} Term;
+```
+
+This allows efficient storage of polynomials by only storing non-zero terms, similar to sparse matrix representation.
+
+## Advantages of Sparse Representations
+
+### Sparse Matrix Benefits
 
 1. **Memory Efficiency**: Only stores non-zero elements
 2. **Computational Efficiency**: Operations only on non-zero elements
