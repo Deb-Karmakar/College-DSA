@@ -7,7 +7,7 @@ This repository contains Data Structures and Algorithms (DSA) implementations fo
 
 ### 1. Sparse Matrix Operations
 
-#### `1_TransposeSparseMatrixOfTripletForm`
+#### `1.0_TransposeSparseMatrixOfTripletForm`
 **Purpose**: Implementation of sparse matrix transpose using triplet representation
 
 **Features**:
