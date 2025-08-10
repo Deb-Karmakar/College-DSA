@@ -133,6 +133,71 @@ This repository contains comprehensive Data Structures and Algorithms (DSA) impl
 **Time Complexity**: All operations O(1)
 **Space Complexity**: O(n) where n is MAX_SIZE
 
+#### `2.2_Queue.c`
+**Purpose**: Linear queue (FIFO) implementation with menu-driven interface
+
+**Features**:
+- Array-based linear queue implementation with fixed size (MAX_SIZE = 5)
+- Interactive menu-driven interface with 6 operations
+- First-In-First-Out (FIFO) principle implementation
+- Complete error handling for overflow and underflow conditions
+- Real-time queue status checking and display
+- Linear array implementation with front and rear pointers
+
+**Key Functions**:
+- `initQueue()`: Initializes queue with front = 0, rear = -1
+- `enqueueRear()`: Adds element at rear end of queue
+- `dequeueFront()`: Removes and returns element from front end
+- `isEmpty()`: Checks if queue is empty (front > rear)
+- `isFull()`: Checks if queue is at maximum capacity (rear == MAX_SIZE - 1)
+- `displayQueue()`: Shows all elements from front to rear
+- `displayMenu()`: Interactive menu display
+
+**Menu Options**:
+1. Enqueue Rear - Add element at rear
+2. Dequeue Front - Remove element from front
+3. Check if Empty - Verify empty status
+4. Check if Full - Verify full status
+5. Display Queue - Show all elements in order
+6. Exit - Terminate program
+
+**Time Complexity**: All operations O(1)
+**Space Complexity**: O(n) where n is MAX_SIZE
+**Note**: Linear implementation may waste space after dequeue operations
+
+#### `2.3_CircularQueue.c`
+**Purpose**: Circular queue (FIFO) implementation with efficient space utilization
+
+**Features**:
+- Array-based circular queue implementation with fixed size (MAX_SIZE = 5)
+- Interactive menu-driven interface with 6 operations
+- Circular array implementation using modular arithmetic
+- Efficient space utilization - no memory wastage after dequeue
+- Advanced circular indexing for front and rear pointers
+- Complete error handling and boundary condition management
+- Real-time queue content display with circular traversal
+
+**Key Functions**:
+- `initQueue()`: Initializes circular queue with front = rear = -1
+- `enqueueRear()`: Adds element at rear using circular indexing
+- `dequeueFront()`: Removes element from front with circular logic
+- `isEmpty()`: Checks if queue is empty (front == -1)
+- `isFull()`: Checks if queue is full using circular formula ((rear + 1) % MAX_SIZE == front)
+- `displayQueue()`: Shows all elements using circular traversal
+- `displayMenu()`: Interactive menu display
+
+**Menu Options**:
+1. Enqueue Rear - Add element at rear
+2. Dequeue Front - Remove element from front
+3. Check if Empty - Verify empty status
+4. Check if Full - Verify full status
+5. Display Queue - Show all elements in circular order
+6. Exit - Terminate program
+
+**Time Complexity**: All operations O(1)
+**Space Complexity**: O(n) where n is MAX_SIZE
+**Advantage**: Better space utilization compared to linear queue
+
 ## Compilation and Execution
 
 ### Prerequisites
@@ -149,6 +214,8 @@ gcc -o polynomial 1.2_Add_Mul_Poly.c
 # Linear Data Structures
 gcc -o stack 2.0_Stack.c
 gcc -o deque 2.1_Deque.c
+gcc -o queue 2.2_Queue.c
+gcc -o circularqueue 2.3_CircularQueue.c
 ```
 
 ### Execution
@@ -161,6 +228,8 @@ gcc -o deque 2.1_Deque.c
 # Linear Data Structure Programs
 ./stack
 ./deque
+./queue
+./circularqueue
 ```
 
 ## Program Usage
@@ -206,6 +275,26 @@ gcc -o deque 2.1_Deque.c
 - Display all elements in current order
 - Advanced circular array implementation
 - Complete error handling and validation
+
+### 6. Queue Operations (`2.2_Queue.c`)
+**Interactive Menu-Driven Program**
+- Choose from 6 menu options for FIFO operations
+- Perform enqueue/dequeue operations
+- Check queue status (full/empty)
+- Display all elements in queue order
+- Real-time feedback for all operations
+- Automatic error handling for overflow/underflow
+- Linear array implementation with potential space wastage after dequeue
+
+### 7. Circular Queue Operations (`2.3_CircularQueue.c`)
+**Interactive Menu-Driven Program**
+- Choose from 6 menu options for efficient FIFO operations
+- Perform enqueue/dequeue operations with circular indexing
+- Check queue status (full/empty) using circular logic
+- Display all elements in circular queue order
+- Advanced circular array implementation for optimal space utilization
+- Complete error handling and validation
+- No memory wastage - efficient space reuse after dequeue operations
 
 ## Data Structures
 
@@ -258,6 +347,28 @@ typedef struct {
 } Dequeue;
 ```
 
+### Queue Structure
+
+The linear queue is implemented using a structure with array and front/rear pointers:
+```c
+typedef struct {
+    int items[MAX_SIZE];  // Array to store queue elements
+    int front;           // Index of front element (initialized to 0)
+    int rear;            // Index of rear element (initialized to -1)
+} Queue;
+```
+
+### Circular Queue Structure
+
+The circular queue uses circular array implementation with efficient space utilization:
+```c
+typedef struct {
+    int items[MAX_SIZE];  // Circular array for storage
+    int front;           // Index of front element (-1 for empty)
+    int rear;            // Index of rear element (-1 for empty)
+} CircularQueue;
+```
+
 ## Advantages of Data Structure Implementations
 
 ### Sparse Matrix Benefits
@@ -275,6 +386,19 @@ typedef struct {
 2. **Circular Implementation**: Efficient space utilization
 3. **O(1) Operations**: All operations in constant time
 4. **Versatile**: Can function as both stack and queue
+
+### Queue Benefits
+1. **FIFO Operations**: Perfect for task scheduling, breadth-first search
+2. **O(1) Complexity**: All operations in constant time
+3. **Simple Implementation**: Easy to understand and implement
+4. **Real-world Applications**: Print queues, process scheduling
+
+### Circular Queue Benefits
+1. **Space Efficiency**: No memory wastage, optimal array utilization
+2. **FIFO Operations**: Maintains queue properties with better space management
+3. **O(1) Operations**: All operations in constant time
+4. **Continuous Operations**: Can handle continuous enqueue/dequeue cycles efficiently
+5. **Memory Optimization**: Reuses array space that linear queue wastes
 
 ## Learning Objectives
 
