@@ -198,6 +198,44 @@ This repository contains comprehensive Data Structures and Algorithms (DSA) impl
 **Space Complexity**: O(n) where n is MAX_SIZE
 **Advantage**: Better space utilization compared to linear queue
 
+### 3. Expression Conversion and Evaluation
+
+#### `3.0_InfixToPostfix.c`
+**Purpose**: Convert infix expressions to postfix notation and evaluate the result
+
+**Features**:
+- Complete infix to postfix conversion using operator precedence rules
+- Postfix expression evaluation with stack-based algorithm
+- Support for all basic arithmetic operators (+, -, *, /, ^)
+- Handles parentheses for expression grouping
+- Multi-digit number support in expressions
+- Comprehensive operator precedence management
+- Automatic whitespace handling and formatting
+
+**Key Functions**:
+- `infixToPostfix()`: Converts infix expression to postfix using Shunting Yard algorithm
+- `evaluatePostfix()`: Evaluates postfix expression using stack-based approach
+- `precedence()`: Returns operator precedence for correct conversion
+- `isOperator()`: Checks if character is a valid arithmetic operator
+- `pushOp()` / `popOp()` / `peekOp()`: Stack operations for operators
+- `pushVal()` / `popVal()`: Stack operations for operand values
+
+**Input**: Infix arithmetic expression with numbers, operators, and parentheses
+**Output**: Postfix expression and final evaluated result
+**Time Complexity**: O(n) where n is the length of the expression
+**Space Complexity**: O(n) for the stack storage
+
+**Operator Precedence**:
+1. `^` (Exponentiation) - Highest precedence (3)
+2. `*`, `/` (Multiplication, Division) - Medium precedence (2)
+3. `+`, `-` (Addition, Subtraction) - Lowest precedence (1)
+4. `(`, `)` (Parentheses) - Override precedence rules
+
+**Example**:
+- Input: `3 + 4 * 2 / (1 - 5) ^ 2`
+- Postfix: `3 4 2 * 1 5 - 2 ^ / +`
+- Result: `3`
+
 ## Compilation and Execution
 
 ### Prerequisites
@@ -216,6 +254,9 @@ gcc -o stack 2.0_Stack.c
 gcc -o deque 2.1_Deque.c
 gcc -o queue 2.2_Queue.c
 gcc -o circularqueue 2.3_CircularQueue.c
+
+# Expression Conversion and Evaluation
+gcc -o infixtopostfix 3.0_InfixToPostfix.c
 ```
 
 ### Execution
@@ -230,6 +271,9 @@ gcc -o circularqueue 2.3_CircularQueue.c
 ./deque
 ./queue
 ./circularqueue
+
+# Expression Conversion and Evaluation Programs
+./infixtopostfix
 ```
 
 ## Program Usage
@@ -295,6 +339,26 @@ gcc -o circularqueue 2.3_CircularQueue.c
 - Advanced circular array implementation for optimal space utilization
 - Complete error handling and validation
 - No memory wastage - efficient space reuse after dequeue operations
+
+### 8. Infix to Postfix Conversion (`3.0_InfixToPostfix.c`)
+**Direct Expression Processing Program**
+1. Enter an infix arithmetic expression (e.g., `3 + 4 * 2 / (1 - 5) ^ 2`)
+2. Program automatically converts to postfix notation using Shunting Yard algorithm
+3. Displays the postfix expression with proper spacing
+4. Evaluates the postfix expression using stack-based evaluation
+5. Shows the final numerical result
+
+**Supported Operations**:
+- Basic arithmetic: `+`, `-`, `*`, `/`, `^`
+- Parentheses for grouping: `(`, `)`
+- Multi-digit numbers
+- Proper operator precedence handling
+- Whitespace tolerance in input
+
+**Example Usage**:
+- Input: `3 + 4 * 2 / (1 - 5) ^ 2`
+- Output Postfix: `3 4 2 * 1 5 - 2 ^ / +`
+- Final Result: `3`
 
 ## Data Structures
 
