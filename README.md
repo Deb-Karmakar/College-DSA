@@ -198,7 +198,7 @@ This repository contains comprehensive Data Structures and Algorithms (DSA) impl
 **Space Complexity**: O(n) where n is MAX_SIZE
 **Advantage**: Better space utilization compared to linear queue
 
-### 3. Expression Conversion and Evaluation
+### 3. Linked List Implementations and Expression Evaluation
 
 #### `3.0_InfixToPostfix.c`
 **Purpose**: Convert infix expressions to postfix notation and evaluate the result
@@ -257,6 +257,7 @@ gcc -o circularqueue 2.3_CircularQueue.c
 
 # Expression Conversion and Evaluation
 gcc -o infixtopostfix 3.0_InfixToPostfix.c
+gcc -o linkedlist 3.1_singly_linked_list.c
 ```
 
 ### Execution
@@ -272,8 +273,9 @@ gcc -o infixtopostfix 3.0_InfixToPostfix.c
 ./queue
 ./circularqueue
 
-# Expression Conversion and Evaluation Programs
+# Expression Conversion and Linked List Programs
 ./infixtopostfix
+./linkedlist
 ```
 
 ## Program Usage
@@ -360,6 +362,55 @@ gcc -o infixtopostfix 3.0_InfixToPostfix.c
 - Output Postfix: `3 4 2 * 1 5 - 2 ^ / +`
 - Final Result: `3`
 
+### 9. Singly Linked List Operations (`3.1_singly_linked_list.c`)
+**Interactive Menu-Driven Program**
+- Choose from 4 menu options for dynamic list operations
+- Insert nodes at any position in the list
+- Delete nodes from any position in the list
+- Display the complete linked list with pointer visualization
+- Real-time feedback for all operations
+- Automatic error handling for invalid positions
+- Dynamic memory management with proper allocation and deallocation
+
+**Example Operations**:
+1. Insert data 10 at position 1 → Creates first node
+2. Insert data 20 at position 2 → Adds node at end  
+3. Insert data 15 at position 2 → Inserts between existing nodes
+4. Display → Shows: `List: 10 -> 15 -> 20 -> NULL`
+5. Delete position 2 → Removes node with data 15
+6. Display → Shows: `List: 10 -> 20 -> NULL`
+
+#### `3.1_singly_linked_list.c`
+**Purpose**: Complete implementation of a singly linked list with menu-driven interface
+
+**Features**:
+- Dynamic memory allocation for nodes using malloc()
+- Comprehensive node insertion at any position
+- Node deletion from any position with memory management
+- Interactive menu-driven interface with 4 operations
+- Complete error handling for boundary conditions
+- Memory leak prevention with proper free() calls
+- Real-time linked list visualization
+
+**Key Functions**:
+- `insert()`: Inserts a node at any specified position
+- `deleteNode()`: Removes a node from any specified position
+- `display()`: Shows all elements in the list with pointer visualization
+- `main()`: Interactive menu interface with user input handling
+
+**Menu Options**:
+1. Insert - Add a new node at specified position
+2. Delete - Remove a node from specified position
+3. Display - Show the complete linked list
+4. Exit - Terminate program
+
+**Time Complexity**:
+- Insertion: O(n) in worst case (inserting at end), O(1) for front insertion
+- Deletion: O(n) in worst case (deleting from end), O(1) for front deletion
+- Display: O(n) where n is the number of nodes
+
+**Space Complexity**: O(n) where n is the number of nodes
+
 ## Data Structures
 
 ### Triplet Representation
@@ -422,6 +473,16 @@ typedef struct {
 } Queue;
 ```
 
+### Linked List Node Structure
+
+The singly linked list uses a node structure with data and next pointer:
+```c
+typedef struct Node {
+    int data;           // Data part of the node (stores an integer)
+    struct Node* next;  // Pointer to the next node
+} Node;
+```
+
 ### Circular Queue Structure
 
 The circular queue uses circular array implementation with efficient space utilization:
@@ -464,6 +525,14 @@ typedef struct {
 4. **Continuous Operations**: Can handle continuous enqueue/dequeue cycles efficiently
 5. **Memory Optimization**: Reuses array space that linear queue wastes
 
+### Linked List Benefits
+1. **Dynamic Size**: Grows and shrinks at runtime without fixed size limitations
+2. **Efficient Insertions/Deletions**: O(1) time complexity for front operations
+3. **Memory Efficiency**: Allocates memory as needed, no pre-allocation required
+4. **No Memory Wastage**: Only allocates memory for actual elements
+5. **Implementation Flexibility**: Basis for more complex data structures
+6. **No Overflow**: Limited only by system memory, not by predefined size
+
 ## Learning Objectives
 
 ### Core Concepts
@@ -474,9 +543,10 @@ typedef struct {
 - Time and space complexity analysis
 
 ### Data Structure Mastery
-- Implementation of linear data structures (Stack, Deque)
+- Implementation of linear data structures (Stack, Queue, Deque, Linked List)
 - Understanding LIFO (Last In First Out) principle for stacks
 - Circular array implementation for deques
+- Dynamic memory allocation and pointer manipulation for linked lists
 - Menu-driven programming and user interface design
 - Error handling and boundary condition management
 
