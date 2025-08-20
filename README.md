@@ -236,6 +236,95 @@ This repository contains comprehensive Data Structures and Algorithms (DSA) impl
 - Postfix: `3 4 2 * 1 5 - 2 ^ / +`
 - Result: `3`
 
+#### `3.1_singly_linked_list.c`
+**Purpose**: Complete implementation of a singly linked list with menu-driven interface
+
+**Features**:
+- Dynamic memory allocation for nodes using malloc()
+- Comprehensive node insertion at any position
+- Node deletion from any position with memory management
+- Interactive menu-driven interface with 4 operations
+- Complete error handling for boundary conditions
+- Memory leak prevention with proper free() calls
+- Real-time linked list visualization
+
+**Key Functions**:
+- `insert()`: Inserts a node at any specified position
+- `deleteNode()`: Removes a node from any specified position
+- `display()`: Shows all elements in the list with pointer visualization
+- `main()`: Interactive menu interface with user input handling
+
+**Menu Options**:
+1. Insert - Add a new node at specified position
+2. Delete - Remove a node from specified position
+3. Display - Show the complete linked list
+4. Exit - Terminate program
+
+**Time Complexity**:
+- Insertion: O(n) in worst case (inserting at end), O(1) for front insertion
+- Deletion: O(n) in worst case (deleting from end), O(1) for front deletion
+- Display: O(n) where n is the number of nodes
+
+**Space Complexity**: O(n) where n is the number of nodes
+
+### 4. Advanced Linked List Structures
+
+#### `4.0_Circular_singly_linked_list.c`
+**Purpose**: Complete implementation of a circular singly linked list with comprehensive operations
+
+**Features**:
+- Circular singly linked list with global head pointer
+- Advanced insertion at any position with validation
+- Deletion from any position with proper memory management
+- Search functionality to locate elements by value
+- List reversal operation maintaining circular property
+- Interactive menu-driven interface with 6 operations
+- Comprehensive error handling and boundary condition management
+- Dynamic memory allocation and deallocation
+- Node counting functionality for validation
+
+**Key Functions**:
+- `createNode()`: Creates a new node with dynamic memory allocation
+- `countNodes()`: Counts total nodes in the circular list
+- `insert()`: Inserts a node at any specified position with validation
+- `deleteNode()`: Removes a node from any specified position
+- `display()`: Shows all elements in circular traversal order
+- `search()`: Searches for an element and returns its position
+- `reverse()`: Reverses the circular linked list while maintaining circular property
+
+**Menu Options**:
+1. Insert - Add a new node at specified position
+2. Delete - Remove a node from specified position
+3. Display - Show the complete circular linked list
+4. Search - Find an element and display its position
+5. Reverse - Reverse the entire circular linked list
+6. Exit - Terminate program
+
+**Key Operations**:
+- **Insertion at Front**: Updates head pointer and maintains circular connection with last node
+- **Insertion at End/Middle**: Traverses to appropriate position and maintains circular links
+- **Deletion of Single Node**: Handles special case when list has only one node
+- **Deletion from Front**: Updates head and maintains circular connection
+- **Search Operation**: Complete circular traversal to find elements
+- **Reverse Operation**: Advanced pointer manipulation while preserving circular structure
+
+**Time Complexity**:
+- Insertion: O(n) in worst case, O(1) for front insertion
+- Deletion: O(n) in worst case, O(1) for front deletion  
+- Search: O(n) for complete circular traversal
+- Display: O(n) for circular traversal
+- Reverse: O(n) for complete list reversal
+- Count: O(n) for node counting
+
+**Space Complexity**: O(n) where n is the number of nodes
+
+**Advantages of Circular Implementation**:
+- No NULL pointers - last node points to first node
+- Efficient circular traversal - useful for round-robin scheduling
+- Better memory utilization for cyclic data structures
+- Simplified insertion at end (no need to find last node for some operations)
+- Natural fit for applications requiring circular data flow
+
 ## Compilation and Execution
 
 ### Prerequisites
@@ -255,9 +344,12 @@ gcc -o deque 2.1_Deque.c
 gcc -o queue 2.2_Queue.c
 gcc -o circularqueue 2.3_CircularQueue.c
 
-# Expression Conversion and Evaluation
+# Expression Conversion and Linked List Programs
 gcc -o infixtopostfix 3.0_InfixToPostfix.c
 gcc -o linkedlist 3.1_singly_linked_list.c
+
+# Advanced Linked List Structures
+gcc -o circularlinkedlist 4.0_Circular_singly_linked_list.c
 ```
 
 ### Execution
@@ -276,6 +368,9 @@ gcc -o linkedlist 3.1_singly_linked_list.c
 # Expression Conversion and Linked List Programs
 ./infixtopostfix
 ./linkedlist
+
+# Advanced Linked List Programs
+./circularlinkedlist
 ```
 
 ## Program Usage
@@ -379,6 +474,36 @@ gcc -o linkedlist 3.1_singly_linked_list.c
 4. Display → Shows: `List: 10 -> 15 -> 20 -> NULL`
 5. Delete position 2 → Removes node with data 15
 6. Display → Shows: `List: 10 -> 20 -> NULL`
+
+### 10. Circular Singly Linked List Operations (`4.0_Circular_singly_linked_list.c`)
+**Interactive Menu-Driven Program**
+- Choose from 6 comprehensive menu options for circular list operations
+- Insert nodes at any position with automatic position validation
+- Delete nodes from any position with proper memory management
+- Search for elements and display their positions in the circular list
+- Reverse the entire circular linked list while maintaining circular property
+- Display the complete circular linked list with circular traversal
+- Advanced error handling for boundary conditions and invalid inputs
+- Dynamic memory management with proper allocation and deallocation
+
+**Example Operations**:
+1. Insert data 10 at position 1 → Creates first node in circular list
+2. Insert data 20 at position 2 → Adds node at end, maintains circular connection
+3. Insert data 15 at position 2 → Inserts between existing nodes in circular structure
+4. Display → Shows: `Circular Linked List: 10 15 20` (with circular connection)
+5. Search element 15 → Output: `Element 15 found at position 2`
+6. Reverse → Reverses entire list while preserving circular property
+7. Display → Shows: `Circular Linked List: 20 15 10` (reversed with circular connection)
+8. Delete position 2 → Removes node with data 15, updates connections
+9. Display → Shows: `Circular Linked List: 20 10` (circular structure maintained)
+
+**Key Features**:
+- **Position Validation**: Checks valid positions based on current list size
+- **Circular Traversal**: All operations respect the circular nature of the list
+- **Memory Management**: Proper allocation and deallocation for all nodes
+- **Search Functionality**: Efficient element search with position reporting
+- **Reverse Operation**: Complex pointer manipulation while preserving circular structure
+- **Error Handling**: Comprehensive validation for empty lists and invalid positions
 
 #### `3.1_singly_linked_list.c`
 **Purpose**: Complete implementation of a singly linked list with menu-driven interface
@@ -532,6 +657,16 @@ typedef struct {
 4. **No Memory Wastage**: Only allocates memory for actual elements
 5. **Implementation Flexibility**: Basis for more complex data structures
 6. **No Overflow**: Limited only by system memory, not by predefined size
+
+### Circular Linked List Benefits
+1. **Circular Traversal**: Last node points to first node, enabling continuous circular traversal
+2. **No NULL Pointer Checks**: Eliminates need for NULL pointer boundary checks in traversal
+3. **Efficient Round-Robin Operations**: Perfect for round-robin scheduling and cyclic algorithms
+4. **Memory Efficiency**: Same dynamic allocation benefits as singly linked list
+5. **Advanced Operations**: Supports complex operations like reverse while maintaining circular property
+6. **Real-world Applications**: Ideal for applications requiring circular data flow (e.g., playlist, game turns)
+7. **Search and Validation**: Comprehensive search functionality with position-based validation
+8. **Boundary Condition Handling**: Robust handling of single-node and empty-list scenarios
 
 ## Learning Objectives
 
