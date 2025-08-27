@@ -10,7 +10,7 @@ typedef struct Node {
 
 Node* head = NULL;
 
-// Create new node
+// Function to create a new node
 Node* createNode(int data) {
     Node* newNode = (Node*)malloc(sizeof(Node));
     newNode->data = data;
@@ -18,20 +18,37 @@ Node* createNode(int data) {
     return newNode;
 }
 
-// Insert at position (1 = front, n+1 = end, middle = intermediate)
+// Function to count nodes
+int countNodes() {
+    if (head == NULL) return 0;
+    int count = 0;
+    Node* temp = head;
+    do {
+        count++;
+        temp = temp->next;
+    } while (temp != head);
+    return count;
+}
+
+// Insert at position (1-based index)
 void insertAtPosition(int data, int pos) {
+    int n = countNodes();
+    if (pos < 1 || pos > n + 1) {
+        printf("Invalid position! List size = %d\n", n);
+        return;
+    }
+
     Node* newNode = createNode(data);
 
-    if (head == NULL) { // first node
+    if (head == NULL) { // First node
         head = newNode;
         head->next = head;
         head->prev = head;
         return;
     }
 
-    if (pos == 1) { // insert at front
+    if (pos == 1) { // Insert at front
         Node* last = head->prev;
-
         newNode->next = head;
         newNode->prev = last;
         last->next = newNode;
@@ -40,16 +57,10 @@ void insertAtPosition(int data, int pos) {
         return;
     }
 
+    // Insert in middle or end
     Node* temp = head;
-    int count = 1;
-    while (count < pos - 1 && temp->next != head) {
+    for (int i = 1; i < pos - 1; i++)
         temp = temp->next;
-        count++;
-    }
-
-    if (count != pos - 1 && temp->next == head) {
-        printf("Position out of range! Inserting at end instead.\n");
-    }
 
     Node* nextNode = temp->next;
     newNode->next = nextNode;
@@ -58,14 +69,19 @@ void insertAtPosition(int data, int pos) {
     nextNode->prev = newNode;
 }
 
-// Delete from position
+// Delete at position
 void deleteAtPosition(int pos) {
-    if (head == NULL) {
+    int n = countNodes();
+    if (n == 0) {
         printf("List is empty!\n");
         return;
     }
+    if (pos < 1 || pos > n) {
+        printf("Invalid position! List size = %d\n", n);
+        return;
+    }
 
-    if (pos == 1) { // delete head
+    if (pos == 1) { // Delete head
         if (head->next == head) { // only one node
             free(head);
             head = NULL;
@@ -81,16 +97,8 @@ void deleteAtPosition(int pos) {
     }
 
     Node* temp = head;
-    int count = 1;
-    while (count < pos && temp->next != head) {
+    for (int i = 1; i < pos; i++)
         temp = temp->next;
-        count++;
-    }
-
-    if (count != pos) {
-        printf("Position out of range!\n");
-        return;
-    }
 
     Node* prevNode = temp->prev;
     Node* nextNode = temp->next;
@@ -145,7 +153,7 @@ void reverse() {
         temp = current->prev;
         current->prev = current->next;
         current->next = temp;
-        current = current->prev; // because swapped
+        current = current->prev; // move backward since swapped
     } while (current != head);
 
     head = temp->prev; // update head
